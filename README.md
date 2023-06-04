@@ -50,7 +50,7 @@ python3 -m http.server 9999 --bind 0.0.0.0
  
 Проверка работоспособности:
 
-[servers.JPG](https://github.com/elekpow/sflt-2/blob/main/sflt-2/servers.JPG)
+![servers.JPG](https://github.com/elekpow/sflt-2/blob/main/sflt-2/servers.JPG)
 
 
 в секции frontend указываем имя хоста например: myweb.com
@@ -76,7 +76,7 @@ backend web_servers    # секция бэкенд
 
 проверка :
 
-[servers.JPG](https://github.com/elekpow/sflt-2/blob/main/sflt-2/hosts.JPG)
+![servers.JPG](https://github.com/elekpow/sflt-2/blob/main/sflt-2/hosts.JPG)
 
 вирутальная машина зарпущена на сервисе Yandex Cloud , для проверки веб хостов , открываем порт 888
 
@@ -87,7 +87,7 @@ sudo ufw allow 888
 
 HAProxy Statistics
 
-[servers.JPG](https://github.com/elekpow/sflt-2/blob/main/sflt-2/stat.JPG)
+![servers.JPG](https://github.com/elekpow/sflt-2/blob/main/sflt-2/stat.JPG)
 
 
 
