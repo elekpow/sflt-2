@@ -28,7 +28,8 @@
 ### Выполнения задания 1
 
 
-Устанавливаем HAProxy c конфигурацией[ссылка](https://github.com/netology-code/sflt-homeworks/blob/main/2/haproxy/haproxy.cfg)
+Устанавливаем HAProxy c конфигурацией 
+![ссылка](https://github.com/elekpow/sflt-2/blob/main/sflt-2/haproxy.cfg)
 
 ```
  sudo apt-get install haproxy
