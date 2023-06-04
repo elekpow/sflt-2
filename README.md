@@ -56,8 +56,11 @@ python3 -m http.server 9999 --bind 0.0.0.0
 в секции frontend указываем имя хоста например: myweb.com
 
 ```
-acl ACL_myweb.com hdr(host) -i myweb.com
-use_backend web_servers if ACL_myweb.com
+frontend myweb  # секция фронтенд
+        mode tcp
+        bind :3306
+        acl ACL_myweb.com hdr(host) -i myweb.com
+        use_backend web_servers if ACL_myweb.com
 
 ```
 
@@ -65,10 +68,8 @@ use_backend web_servers if ACL_myweb.com
 
 ```
 backend web_servers    # секция бэкенд
-        mode http
+        mode tcp
         balance roundrobin
-        option httpchk
-        http-check send meth GET uri /index.html
         server s1 127.0.0.1:8888 check
         server s2 127.0.0.1:9999 check
 
