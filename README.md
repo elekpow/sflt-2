@@ -28,9 +28,66 @@
 ### Выполнения задания 1
 
 
+Устанавливаем HAProxy c конфигурацией[ссылка](https://github.com/netology-code/sflt-homeworks/blob/main/2/haproxy/haproxy.cfg)
+
+```
+ sudo apt-get install haproxy
+ 
+ sudo nano /etc/haproxy/haproxy.cfg
+  
+```
+
+Cоздаем директории для двух веб-серверов http1 и http2 с индекснымим файлами index.html
+
+Запуск двух python серверов осуществляем командами:
+
+```
+python3 -m http.server 8888 --bind 0.0.0.0
+
+python3 -m http.server 9999 --bind 0.0.0.0
+
+```
+ 
+Проверка работоспособности:
+
+[servers.JPG](https://github.com/elekpow/sflt-1/blob/main/sflt-2/servers.JPG)
 
 
+в секции frontend указываем имя хоста например: myweb.com
 
+```
+acl ACL_myweb.com hdr(host) -i myweb.com
+use_backend web_servers if ACL_myweb.com
+
+```
+
+Конфигурация haproxy для балансировки по методу Round-robin на 4 уровне.
+
+```
+backend web_servers    # секция бэкенд
+        mode http
+        balance roundrobin
+        option httpchk
+        http-check send meth GET uri /index.html
+        server s1 127.0.0.1:8888 check
+        server s2 127.0.0.1:9999 check
+
+```
+
+проверка :
+
+[servers.JPG](https://github.com/elekpow/sflt-1/blob/main/sflt-2/hosts.JPG)
+
+вирутальная машина зарпущена на сервисе Yandex Cloud , для проверки веб хостов , открываем порт 888
+
+```
+sudo ufw allow 888
+
+```
+
+HAProxy Statistics
+
+[servers.JPG](https://github.com/elekpow/sflt-1/blob/main/sflt-2/stat.JPG)
 
 
 
