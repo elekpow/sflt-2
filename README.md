@@ -106,6 +106,12 @@ HAProxy Statistics
 
 
 
+
+
+
+
+
+
 ---
 
 
