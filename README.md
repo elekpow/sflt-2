@@ -109,10 +109,6 @@ HAProxy Statistics
 запустим три сервера : Server1 порт: 8888,Server1 порт: 9999,Server1 порт: 7777
 
 
-Конфигурация HAProxy 
-[ссылка](https://github.com/elekpow/sflt-2/blob/main/sflt-2/haproxy_2.cfg)
-
-
 в настройках HAProxy перенастроим  fronted и backend:
 
 для домена "example.local"
@@ -143,9 +139,14 @@ HAProxy Statistics
 ![stat_3_servers.JPG](https://github.com/elekpow/sflt-2/blob/main/sflt-2/stat_3_servers.JPG)
 
 
+
+Конфигурация HAProxy 
+[ссылка](https://github.com/elekpow/sflt-2/blob/main/sflt-2/haproxy_2.cfg)
+
+
 прверяем: все три сервера участвуют в балансировке
 
-![testing.JPG](https://github.com/elekpow/sflt-2/blob/main/sflt-2/testing.JPG)
+![testing_hosts.JPG](https://github.com/elekpow/sflt-2/blob/main/sflt-2/testing_hosts.JPG)
 
 
 ---
