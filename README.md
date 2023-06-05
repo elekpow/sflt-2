@@ -29,7 +29,7 @@
 
 
 Устанавливаем HAProxy c конфигурацией 
-![ссылка](https://github.com/elekpow/sflt-2/blob/main/sflt-2/haproxy.cfg)
+[ссылка](https://github.com/elekpow/sflt-2/blob/main/sflt-2/haproxy.cfg)
 
 ```
  sudo apt-get install haproxy
@@ -110,7 +110,7 @@ HAProxy Statistics
 
 
 Конфигурация HAProxy 
-![ссылка](https://github.com/elekpow/sflt-2/blob/main/sflt-2/haproxy_2.cfg)
+[ссылка](https://github.com/elekpow/sflt-2/blob/main/sflt-2/haproxy_2.cfg)
 
 
 в настройках HAProxy перенастроим  fronted и backend:
