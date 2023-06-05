@@ -78,7 +78,7 @@ backend web_servers    # секция бэкенд
 
 проверка :
 
-![servers.JPG](https://github.com/elekpow/sflt-2/blob/main/sflt-2/hosts.JPG)
+![hosts.JPG](https://github.com/elekpow/sflt-2/blob/main/sflt-2/hosts.JPG)
 
 вирутальная машина зарпущена на сервисе Yandex Cloud , для проверки веб хостов , открываем порт 888
 
@@ -89,7 +89,7 @@ sudo ufw allow 888
 
 HAProxy Statistics
 
-![servers.JPG](https://github.com/elekpow/sflt-2/blob/main/sflt-2/stat.JPG)
+![stat.JPG](https://github.com/elekpow/sflt-2/blob/main/sflt-2/stat.JPG)
 
 
 
@@ -106,12 +106,46 @@ HAProxy Statistics
 
 ### Выполнения задания 2
 
+запустим три сервера : Server1 порт: 8888,Server1 порт: 9999,Server1 порт: 7777
 
 
+Конфигурация HAProxy 
+![ссылка](https://github.com/elekpow/sflt-2/blob/main/sflt-2/haproxy_2.cfg)
 
 
+в настройках HAProxy перенастроим  fronted и backend:
+
+для домена "example.local"
+
+```
+frontend example # секция фронтенд
+        bind :8088
+        acl ACL_example.local hdr(host) -i example.local
+        use_backend web_servers if ACL_example.local
+```
+
+настроим веса для каждого сервера
+
+```
+backend web_servers    # секция бэкенд
+        mode http
+        balance roundrobin
+        option httpchk
+        http-check send meth GET uri /index.html
+        server s1 127.0.0.1:8888 check weight 2
+        server s2 127.0.0.1:9999 check weight 3
+        server s3 127.0.0.1:7777 check weight 4
+```
 
 
+HAProxy Statistics
+
+![stat_3_servers.JPG](https://github.com/elekpow/sflt-2/blob/main/sflt-2/stat_3_servers.JPG)
+
+
+прверяем: все три сервера участвуют в балансировке
+
+![testing.JPG](https://github.com/elekpow/sflt-2/blob/main/sflt-2/testing.JPG)
 
 
 ---
